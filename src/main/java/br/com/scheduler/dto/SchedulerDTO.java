@@ -1,7 +1,6 @@
 package br.com.scheduler.dto;
 
 import lombok.Data;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -9,7 +8,7 @@ import java.time.LocalDate;
 public class SchedulerDTO {
     private String originAccount;
     private String destinationAccount;
-    private BigDecimal value;
+    private BigDecimal transferValue;
     private BigDecimal tax;
     private LocalDate transferDate;
     private LocalDate schedulingDate;

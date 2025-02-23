@@ -12,27 +12,27 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "transfer_scheduling", schema = "sch")
+@Table(name = "transfer_scheduling")
 public class Scheduler {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "origin_account")
+    @Column(name = "origin_account", nullable = false)
     private String originAccount;
 
-    @Column(name = "destination_account")
+    @Column(name = "destination_account", nullable = false)
     private String destinationAccount;
 
-    @Column(name = "value")
-    private BigDecimal value;
+    @Column(name = "transfer_value", nullable = false)
+    private BigDecimal transferValue;
 
     @Column(name = "tax")
     private BigDecimal tax;
 
-    @Column(name = "transfer_date")
+    @Column(name = "transfer_date", nullable = false)
     private LocalDate transferDate;
 
-    @Column(name = "scheduling_date")
+    @Column(name = "scheduling_date", nullable = false)
     private LocalDate schedulingDate;
 }
