@@ -3,6 +3,7 @@
 Este projeto é um sistema para agendamento de transferências financeiras. Ele é desenvolvido usando Java, Spring Boot, JPA e H2.
 
 ## Estrutura do Projeto
+**Arquitetura em Camadas**: A aplicação segue a arquitetura em camadas para garantir uma separação clara de responsabilidades.
 
 - **Controller**: Responsável por receber as requisições HTTP e encaminhá-las para o serviço apropriado.
 - **Service**: Contém a lógica de negócios da aplicação.
