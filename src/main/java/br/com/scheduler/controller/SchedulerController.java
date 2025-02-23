@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -35,7 +36,7 @@ public class SchedulerController {
             @ApiResponse(responseCode = "200", description = "Transferência agendada com sucesso"),
             @ApiResponse(responseCode = "400", description = "Dados inválidos")
     })
-    public Scheduler scheduleTransfer(@RequestBody SchedulerDTO schedulerDTO) {
+    public Scheduler scheduleTransfer(@Valid @RequestBody SchedulerDTO schedulerDTO) {
         return service.createTransfer(schedulerDTO);
     }
 }

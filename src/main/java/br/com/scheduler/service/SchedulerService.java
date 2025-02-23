@@ -22,6 +22,14 @@ public class SchedulerService {
     }
 
     public Scheduler createTransfer(SchedulerDTO schedulerDTO) {
+        if (schedulerDTO.getTransferDate().isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("A data de transferência não pode ser anterior à data atual.");
+        }
+
+        if (schedulerDTO.getTransferValue() == null || schedulerDTO.getTransferValue().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("O valor da transferência deve ser maior que zero.");
+        }
+
         Scheduler scheduler = new Scheduler();
         scheduler.setOriginAccount(schedulerDTO.getOriginAccount());
         scheduler.setDestinationAccount(schedulerDTO.getDestinationAccount());
@@ -37,13 +45,14 @@ public class SchedulerService {
 
     private BigDecimal calculateTax(LocalDate transferDate, BigDecimal transferValue) {
         long days = ChronoUnit.DAYS.between(LocalDate.now(), transferDate);
+
         if (days == 0) return transferValue.multiply(BigDecimal.valueOf(0.025)).add(BigDecimal.valueOf(3.00));
         if (days >= 1 && days <= 10) return BigDecimal.valueOf(12.00);
         if (days >= 11 && days <= 20) return transferValue.multiply(BigDecimal.valueOf(0.082));
         if (days >= 21 && days <= 30) return transferValue.multiply(BigDecimal.valueOf(0.069));
         if (days >= 31 && days <= 40) return transferValue.multiply(BigDecimal.valueOf(0.047));
         if (days >= 41 && days <= 50) return transferValue.multiply(BigDecimal.valueOf(0.017));
-        throw new IllegalArgumentException("Data de transferência inválida");
+        throw new IllegalArgumentException("A data de transferência deve estar dentro do intervalo de 0 a 50 dias a partir da data atual.");
     }
 
 }
