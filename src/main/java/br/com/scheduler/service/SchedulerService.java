@@ -16,7 +16,6 @@ public class SchedulerService {
     private SchedulerRepository repository;
 
     public List<Scheduler> listTransfers() {
-        System.out.println("Teste");
         return repository.findAll();
     }
 
