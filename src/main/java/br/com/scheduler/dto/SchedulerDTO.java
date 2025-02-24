@@ -5,11 +5,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
+
 public class SchedulerDTO {
     private String originAccount;
     private String destinationAccount;
     private BigDecimal transferValue;
-    private BigDecimal tax;
     private LocalDate transferDate;
-    private LocalDate schedulingDate;
 }

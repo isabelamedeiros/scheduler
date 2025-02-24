@@ -22,7 +22,7 @@ public class SchedulerService {
     }
 
     public Scheduler createTransfer(SchedulerDTO schedulerDTO) {
-        if (schedulerDTO.getTransferDate().isBefore(LocalDate.now())) {
+        if (schedulerDTO.getTransferDate() == null || schedulerDTO.getTransferDate().isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("A data de transferência não pode ser anterior à data atual.");
         }
 

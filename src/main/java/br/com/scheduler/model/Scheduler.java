@@ -22,12 +22,12 @@ public class Scheduler {
     private Long id;
 
     @NotNull(message = "A conta de origem é obrigatória.")
-    @Size(min = 10, max = 10, message = "A conta deve ter 10 dígitos.")
+    @Size(min = 10, max = 10, message = "A conta de origem deve ter 10 dígitos.")
     @Column(name = "origin_account", nullable = false)
     private String originAccount;
 
     @NotNull(message = "A conta de destino é obrigatória.")
-    @Size(min = 10, max = 10, message = "A conta deve ter 10 dígitos.")
+    @Size(min = 10, max = 10, message = "A conta de destino deve ter 10 dígitos.")
     @Column(name = "destination_account", nullable = false)
     private String destinationAccount;
 
